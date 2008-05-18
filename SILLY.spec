@@ -30,7 +30,7 @@ wczytywania obrazów). Celem projektu jest udostępnienie prostej
 biblioteki do wczytywania obrazów w kontekście CEGUI. Obsługuje tylko
 najpopularniejsze formaty obrazów. Projekt został zapoczątkowany w
 celu zapewnienia zamiennika MIT biblioteki DevIL z mniejszą liczbą
-obsługiwanych formaów i skupiającego się tylko na wczytywaniu obrazów.
+obsługiwanych formatów i skupiającego się tylko na wczytywaniu obrazów.
 
 %package devel
 Summary:	Header files for SILLY library
