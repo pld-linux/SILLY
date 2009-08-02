@@ -1,0 +1,27 @@
+diff -urN SILLY-0.1.0/acinclude.m4 SILLY-0.1.0.new/acinclude.m4
+--- SILLY-0.1.0/acinclude.m4	2006-08-01 22:12:24.000000000 +0200
++++ SILLY-0.1.0.new/acinclude.m4	2009-08-02 13:33:18.101057009 +0200
+@@ -13,6 +13,14 @@
+   	fi], 
+ 	[])
+ 
++silly_zlib_libdir_name="lib"
++AC_ARG_WITH([zlib-libdir],
++    AC_HELP_STRING([--with-zlib-libdir=DIR], [directory name where is zlib library you want to use]),
++	[if test "$withval" != no ; then
++	    silly_zlib_libdir_name="$withval"
++	fi],
++	[])
++
+ dnl search in all path 
+ HAVE_ZLIB=no
+ for dir in $silly_zlib_search  
+@@ -20,7 +28,7 @@
+ 	if  test "$HAVE_ZLIB"  = "no" ; then 
+ 		silly_zlib_home="$dir"
+ 		silly_zlib_cppflags="-I$silly_zlib_home/include" 
+-		silly_zlib_ldflags="-L$silly_zlib_home/lib" 
++		silly_zlib_ldflags="-L$silly_zlib_home/$silly_zlib_libdir_name" 
+ 	  	if test -f "${silly_zlib_home}/include/zlib.h" ; then 
+ 			CPPFLAGS="$silly_zlib_cppflags $silly_zlib_save_CPPFLAGS"
+ 			LDFALGS="$silly_zlib_ldflags $silly_zlib_save_LDFLAGS"
