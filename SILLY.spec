@@ -2,17 +2,21 @@ Summary:	Simple Image Loading LibrarY
 Summary(pl.UTF-8):	Simple Image Loading LibrarY - prosta biblioteka do wczytywania obrazów
 Name:		SILLY
 Version:	0.1.0
-Release:	2
+Release:	3
 License:	MIT-like
 Group:		Libraries
 Source0:	http://dl.sourceforge.net/crayzedsgui/%{name}-%{version}.tar.gz
 # Source0-md5:	c3721547fced7792a36ffc9ce6ec23fd
 Source1:	http://dl.sourceforge.net/crayzedsgui/%{name}-DOCS-%{version}.tar.gz
 # Source1-md5:	e52e9043b21a9d35a6da66ce9e84d3e1
+Patch0:		%{name}-link.patch
 URL:		http://www.cegui.org.uk/wiki/index.php/SILLY
+BuildRequires:	autoconf >= 2.59
+BuildRequires:	automake
 BuildRequires:	libjpeg-devel
 BuildRequires:	libpng-devel >= 2:1.2.10
 BuildRequires:	libstdc++-devel
+BuildRequires:	libtool
 Requires:	libpng >= 2:1.2.10
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -61,9 +65,16 @@ Statyczna biblioteka SILLY.
 
 %prep
 %setup -q -b 1
+%patch0 -p1
 
 %build
-%configure
+%{__libtoolize}
+%{__aclocal}
+%{__autoconf}
+%{__autoheader}
+%{__automake}
+%configure \
+	--with-zlib-libdir="%{_lib}"
 %{__make}
 
 %install
@@ -82,6 +93,7 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %doc AUTHORS COPYING ChangeLog
 %attr(755,root,root) %{_libdir}/libSILLY.so.*.*.*
+%attr(755,root,root) %ghost %{_libdir}/libSILLY.so.1
 
 %files devel
 %defattr(644,root,root,755)
