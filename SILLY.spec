@@ -17,6 +17,7 @@ BuildRequires:	libjpeg-devel
 BuildRequires:	libpng-devel >= 2:1.2.10
 BuildRequires:	libstdc++-devel
 BuildRequires:	libtool
+BuildRequires:	pkgconfig
 Requires:	libpng >= 2:1.2.10
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
