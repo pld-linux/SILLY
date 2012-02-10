@@ -2,7 +2,7 @@ Summary:	Simple Image Loading LibrarY
 Summary(pl.UTF-8):	Simple Image Loading LibrarY - prosta biblioteka do wczytywania obrazów
 Name:		SILLY
 Version:	0.1.0
-Release:	5
+Release:	6
 License:	MIT-like
 Group:		Libraries
 Source0:	http://dl.sourceforge.net/crayzedsgui/%{name}-%{version}.tar.gz
@@ -10,6 +10,7 @@ Source0:	http://dl.sourceforge.net/crayzedsgui/%{name}-%{version}.tar.gz
 Source1:	http://dl.sourceforge.net/crayzedsgui/%{name}-DOCS-%{version}.tar.gz
 # Source1-md5:	e52e9043b21a9d35a6da66ce9e84d3e1
 Patch0:		%{name}-link.patch
+Patch1:		%{name}-libpng15.patch
 URL:		http://www.cegui.org.uk/wiki/index.php/SILLY
 BuildRequires:	autoconf >= 2.59
 BuildRequires:	automake
@@ -67,6 +68,7 @@ Statyczna biblioteka SILLY.
 %prep
 %setup -q -b 1
 %patch0 -p1
+%patch1 -p1
 
 %build
 %{__libtoolize}
