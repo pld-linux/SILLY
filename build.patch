@@ -1,0 +1,10 @@
+--- SILLY-0.1.0/src/loaders/SILLYPNGImageLoader.cpp~	2013-11-06 21:22:53.000000000 +0100
++++ SILLY-0.1.0/src/loaders/SILLYPNGImageLoader.cpp	2013-11-06 21:24:28.625253489 +0100
+@@ -40,6 +40,7 @@
+ #endif
+ 
+ #include "loaders/SILLYPNGImageContext.h" 
++#include <string.h>
+ #include <png.h>
+ // Start section of namespace SILLY
+ namespace SILLY
